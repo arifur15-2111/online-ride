@@ -3,6 +3,7 @@ import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { bookingContext } from '../../App';
 import map from '../../asset/images/Map.png'
+import SimpleMap from '../SimpleMap/SimpleMap';
 const Search = () => {
     const [detail, setDetail] = useState({
         from: '',
@@ -49,8 +50,9 @@ const Search = () => {
                     </Card>
                 </Grid>
                 <Grid item xs={12} md={8} sx={{display: 'flex', justifyContent: 'center'}}>
-                    <img src={map} alt=""/>
+                <SimpleMap></SimpleMap>
                 </Grid>
+                
 
             </Grid>
             

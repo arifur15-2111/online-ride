@@ -5,6 +5,7 @@ import { bookingContext} from '../../App';
 import map from '../../asset/images/Map.png'
 import { fakeData } from '../../FakeData/fakeData';
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
+import SimpleMap from '../SimpleMap/SimpleMap';
 const Img = styled('img')(({theme})=>({
     width: '100%',
     [theme.breakpoints.down('md')]:{
@@ -54,7 +55,7 @@ const Details = () => {
                         </Card>
                     </Grid>
                     <Grid item xs={12} md={8} sx={{pl: '10px'}}>
-                        <Img src={map} alt="" />
+                        <SimpleMap></SimpleMap>
                     </Grid>
                 </Grid>
             </Box>

@@ -13,13 +13,13 @@ const Login = () => {
     const navigate = useNavigate();
     const [newUser, setNewUser] = useState(false);
     const [valid, setValid] = useState({
-        passWordValid: true,
-        emailValid: true
+        password: true,
+        email: true
     })
     const [registrationInformation, setRegistrationInformation] = useState({
         name: '',
         email: '',
-        password: ''
+        password: '',
     })
     const [singedInUser ,setSingedInUser] = useContext(userContext);
 
@@ -96,6 +96,16 @@ const Login = () => {
     }
 
     const handleFormSubmit = (e)=>{
+        if(!registrationInformation.email){
+            const newValid = {...valid};
+            newValid.email=false;
+            setValid(newValid);
+        }
+        if(!registrationInformation.password){
+            const newValid = {...valid};
+            newValid.password=false;
+            setValid(newValid);
+        }
         if(newUser && registrationInformation.email && registrationInformation.password){
             const auth = getAuth();
             createUserWithEmailAndPassword(auth, registrationInformation.email, registrationInformation.password)
@@ -158,7 +168,7 @@ const Login = () => {
                                 </Grid>
                             }
                             {
-                                !valid.emailValid&& <Grid xs={12}>
+                                !valid.email&& <Grid xs={12}>
                                 <Typography sx={{color: 'red', pl: '20px'}}>Enter a valid Email.</Typography>
                             </Grid>
                             }
@@ -167,7 +177,7 @@ const Login = () => {
                             </Grid>
 
                             {
-                                !valid.passWordValid && <Grid xs={12}>
+                                !valid.password && <Grid xs={12}>
                                     <Typography sx={{pl: '20px', color: 'red'}}>Password shuld contain numaric value, special character, alphabet charater include atleast one capital letter and total length will be 8. </Typography>
                                 </Grid>
                             }
